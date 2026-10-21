@@ -30,6 +30,56 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Validate website files and local links
+        shell: bash
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path(".")
+          html = (root / "index.html").read_text(encoding="utf-8")
+          class PageCheck(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = set()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if attrs.get("id"):
+                      self.ids.add(attrs["id"])
+                  for attr in ("src", "href"):
+                      value = attrs.get(attr, "")
+                      if value:
+                          self.refs.append(value)
+
+          page = PageCheck()
+          page.feed(html)
+          missing = []
+          bad_fragments = []
+          for ref in page.refs:
+              parsed = urlparse(ref)
+              if parsed.scheme or parsed.netloc or ref.startswith(("data:", "mailto:", "tel:", "javascript:")):
+                  continue
+              if parsed.path:
+                  target = (root / parsed.path.lstrip("/")).resolve()
+                  if not target.is_file():
+                      missing.append(ref)
+              if parsed.fragment and not parsed.path and parsed.fragment not in page.ids:
+                  bad_fragments.append(ref)
+          if missing or bad_fragments:
+              if missing:
+                  print("Missing local files:", *missing, sep="\\n- ")
+              if bad_fragments:
+                  print("Missing in-page anchors:", *bad_fragments, sep="\\n- ")
+              raise SystemExit(1)
+          for required in ("assets/css/style.css", "assets/js/script.js", "assets/images/oday-profile.jpg"):
+              if not (root / required).is_file():
+                  raise SystemExit(f"Required asset missing: {required}")
+          print(f"HTML parsed; {len(page.refs)} local/external references checked; required assets exist.")
+          PY
+
       - name: Configure AWS credentials with GitHub OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
