@@ -20,3 +20,11 @@
 .project-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;filter:saturate(.85);z-index:-1}
 .aws-art:before,.aws-art:after{z-index:0;pointer-events:none}
 .project-art>span,.project-art>b,.project-art>strong{position:relative;z-index:1}
+
+/* Profile photo in the hero */
+.hero-profile{display:flex;align-items:center;gap:16px;margin:0 0 28px}
+.hero-profile img{width:96px;height:96px;flex:0 0 96px;object-fit:cover;object-position:center 35%;border-radius:50%;border:3px solid #38bdf8;padding:3px;background:#111d31;box-shadow:0 0 0 6px #38bdf815,0 12px 32px #0005}
+.hero-profile span{display:flex;flex-direction:column;gap:3px}
+.hero-profile strong{font-size:1rem;letter-spacing:.01em}
+.hero-profile small{color:var(--muted);font-size:.8rem}
+@media(max-width:620px){.hero-profile{margin-bottom:22px}.hero-profile img{width:78px;height:78px;flex-basis:78px}}
