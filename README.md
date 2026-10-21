@@ -2,7 +2,7 @@
 
 A responsive personal portfolio showcasing cloud, networking, and engineering projects. The site is hosted in a private Amazon S3 bucket and delivered through Amazon CloudFront over HTTPS.
 
-> **Status:** Deployed. The website loads through CloudFront. Direct access to the S3 `index.html` URL returned `AccessDenied` in an Incognito test. The deployment walkthrough and sanitized screenshot evidence are included. GitHub Actions deployment workflow has been added; AWS OIDC configuration is still required before automatic deployments can run.
+> **Status:** Deployed and updated automatically. The website is served through CloudFront from a private S3 bucket. Direct access to the S3 `index.html` URL returned `AccessDenied` in an Incognito test. GitHub Actions deployment using GitHub OIDC has completed successfully, including S3 upload and CloudFront invalidation.
 
 ## Live website
 
@@ -26,7 +26,7 @@ CloudFront uses the S3 bucket as its origin, private-origin access is enabled, a
 - **Storage:** Amazon S3
 - **Content delivery and HTTPS:** Amazon CloudFront
 - **Origin access:** CloudFront private S3 origin access / OAC
-- **Version control:** Git and GitHub
+- **Automation / CI/CD:** GitHub Actions with GitHub OIDC and AWS IAM role assumption\n- **Version control:** Git and GitHub
 
 ## Repository structure
 
@@ -68,7 +68,7 @@ aws-cloud-portfolio/
 - [x] `index.html` set as default root object
 - [x] Website loads from CloudFront over HTTPS
 - [x] Direct S3 `index.html` request returned `AccessDenied`
-- [ ] Verify navigation, CSS, and JavaScript assets on desktop and mobile
+- [x] Configure GitHub OIDC authentication for the repository\n- [x] Automatically deploy site changes from `main` to private S3\n- [x] Invalidate CloudFront cache after deployment\n- [ ] Complete a final manual desktop/mobile and link check
 - [x] Add sanitized screenshots to the repository
 
 ## Security and cost
