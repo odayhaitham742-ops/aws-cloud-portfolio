@@ -41,7 +41,7 @@ The S3 Objects page showed the `assets/` folder and `index.html` object after up
 - [x] Website confirmed to load from the CloudFront HTTPS URL.
 - [x] Direct S3 `index.html` URL tested in Incognito; S3 returned `AccessDenied`, indicating this object is not publicly readable through that URL.
 - [ ] Verify navigation and static assets on desktop and mobile.
-- [ ] Add sanitized screenshots to the repository.
+- [x] Sanitized screenshots uploaded to the repository.\n- [ ] Configure GitHub Actions AWS OIDC access before automatic deployment can run.
 
 ## Cost and security notes
 
@@ -53,4 +53,4 @@ The S3 Objects page showed the `assets/` folder and `index.html` object after up
 
 ## Evidence
 
-See [deployment walkthrough](deployment-walkthrough.md) for the intended screenshot order and explanatory captions.
+See [deployment walkthrough](deployment-walkthrough.md) for screenshot-by-screenshot explanations. A GitHub Actions workflow is now present at `.github/workflows/deploy.yml`; follow the [automation setup guide](github-actions-deployment.md) to connect it securely to AWS.
