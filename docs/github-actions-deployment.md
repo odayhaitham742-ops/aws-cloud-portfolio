@@ -104,7 +104,7 @@ Never put access keys, secret access keys, or session tokens into repository var
 
 ## Deployment behavior and safety
 
-- Changes to `index.html`, `assets/**`, or the workflow itself on `main` trigger deployment. Documentation-only changes do not upload the site.
+- Changes to `index.html`, `assets/**`, or the workflow itself on `main` trigger deployment. A pre-deployment check parses the HTML and verifies local file references plus required CSS, JavaScript, and profile-image assets. Documentation-only changes do not upload the site.
 - S3 Block Public Access should remain enabled. The workflow deploys to the private bucket and CloudFront remains the public endpoint.
 - A CloudFront invalidation requests that cached paths be refreshed; AWS propagation can take time.
 - GitHub Actions uses the configured OIDC provider, scoped IAM role, `AWS_ROLE_ARN` secret, and repository variables. A successful run has been verified.
