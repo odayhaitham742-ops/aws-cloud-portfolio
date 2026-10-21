@@ -1,6 +1,6 @@
 # Deployment Notes
 
-This document records the actual deployment steps completed for the AWS Cloud Portfolio.
+This document records the AWS steps completed for the portfolio. The screenshot-by-screenshot explanation is in [Deployment Walkthrough](deployment-walkthrough.md).
 
 ## Stage 1 — Create the S3 bucket
 
@@ -15,8 +15,7 @@ This document records the actual deployment steps completed for the AWS Cloud Po
 
 ## Stage 2 — Upload website files
 
-Uploaded the following website content to the bucket:
-
+Uploaded:
 - `index.html` at the bucket root
 - `assets/css/style.css`
 - `assets/js/script.js`
@@ -29,18 +28,10 @@ The S3 Objects page showed the `assets/` folder and `index.html` object after up
 - **Origin:** `oday-static-website-2026.s3.us-east-1.amazonaws.com`
 - **Origin access:** CloudFront access to the private S3 origin enabled during setup
 - **Origin Shield:** Disabled
-- **WAF/security protections:** Not enabled to avoid unnecessary cost for this learning portfolio
+- **WAF/security protections:** Not enabled for this small learning portfolio to avoid unnecessary cost
 - **Default root object:** `index.html`
 - **CloudFront domain:** https://d4onyd9a8q3si.cloudfront.net
 - **Billing mode shown in console:** Pay-as-you-go
-
-The CloudFront distribution was created successfully. The website was then opened using the CloudFront HTTPS URL, and the user confirmed that it loads correctly.
-
-## Architecture
-
-1. Visitors connect to the CloudFront domain over HTTPS.
-2. CloudFront retrieves static content from the S3 origin using the configured private-origin access.
-3. The S3 bucket's Block Public Access setting remains enabled.
 
 ## Validation status
 
@@ -48,18 +39,18 @@ The CloudFront distribution was created successfully. The website was then opene
 - [x] CloudFront distribution created.
 - [x] `index.html` set as the default root object.
 - [x] Website confirmed to load from the CloudFront HTTPS URL.
-- [x] Attempted direct access to the S3 `index.html` object URL in an Incognito window; S3 returned `AccessDenied`. This confirms that this object is not publicly readable through that direct URL.
-- [ ] Check navigation and static assets on desktop and mobile.
-- [ ] Add sanitized AWS screenshots to the repository.
+- [x] Direct S3 `index.html` URL tested in Incognito; S3 returned `AccessDenied`, indicating this object is not publicly readable through that URL.
+- [ ] Verify navigation and static assets on desktop and mobile.
+- [ ] Add sanitized screenshots to the repository.
 
 ## Cost and security notes
 
-- Pay-as-you-go does not mean all usage is guaranteed to be free. Monitor AWS Billing and usage.
-- WAF was not enabled for this small portfolio; this is a cost-conscious learning choice, not a claim that the site has WAF protection.
-- Do not publish AWS access keys, session tokens, passwords, or other credentials.
-- Before committing screenshots, crop or blur account identifiers and any sensitive console details.
-- Keep the bucket private. If a direct S3 URL is publicly accessible, stop and review the bucket policy and public-access settings.
+- Pay-as-you-go does not guarantee that every usage pattern is free. Monitor AWS Billing and current pricing.
+- WAF was not enabled; do not claim the project is protected by AWS WAF.
+- Never publish AWS access keys, session tokens, passwords, or other credentials.
+- Keep S3 Block Public Access enabled and review the bucket policy if direct S3 access is ever allowed unexpectedly.
+- Sanitize screenshots before publishing them: obscure account identifiers and any secrets.
 
-## Screenshots
+## Evidence
 
-Save sanitized evidence in the `screenshots/` directory and update the checklist once each item has been verified.
+See [deployment walkthrough](deployment-walkthrough.md) for the intended screenshot order and explanatory captions.
