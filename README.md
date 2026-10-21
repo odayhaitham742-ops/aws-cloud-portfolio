@@ -74,9 +74,9 @@ aws-cloud-portfolio/
 - [x] Configure GitHub OIDC authentication for the repository
 - [x] Automatically deploy site changes from `main` to private S3
 - [x] Invalidate CloudFront cache after deployment
-- [ ] Complete a final manual desktop/mobile and link check
-- [ ] Verify every screenshot file referenced by the walkthrough exists in the repository
-- [ ] Confirm profile image filename and load on the live site
+- [ ] Complete a final manual responsive-layout check across desktop and mobile sizes
+- [x] Verify every screenshot file referenced by the walkthrough exists in the repository
+- [x] Confirm profile image filename and load on the live site
 - [x] Add sanitized screenshots to the repository
 
 ## Security and cost
