@@ -1,0 +1,53 @@
+name: Deploy portfolio to AWS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "assets/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: portfolio-production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Sync site to private S3 and invalidate CloudFront
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      S3_BUCKET: ${{ vars.S3_BUCKET }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials with GitHub OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Validate deployment configuration
+        shell: bash
+        run: |
+          test -n "$AWS_REGION" || (echo "Missing repository variable AWS_REGION" && exit 1)
+          test -n "$S3_BUCKET" || (echo "Missing repository variable S3_BUCKET" && exit 1)
+          test -n "$CLOUDFRONT_DISTRIBUTION_ID" || (echo "Missing repository variable CLOUDFRONT_DISTRIBUTION_ID" && exit 1)
+
+      - name: Upload website files to S3
+        shell: bash
+        run: |
+          aws s3 cp index.html "s3://$S3_BUCKET/index.html" --content-type "text/html; charset=utf-8"
+          aws s3 sync assets/ "s3://$S3_BUCKET/assets/" --delete
+
+      - name: Invalidate CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" --paths "/*"
