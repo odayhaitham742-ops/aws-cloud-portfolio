@@ -26,7 +26,8 @@ CloudFront uses the S3 bucket as its origin, private-origin access is enabled, a
 - **Storage:** Amazon S3
 - **Content delivery and HTTPS:** Amazon CloudFront
 - **Origin access:** CloudFront private S3 origin access / OAC
-- **Automation / CI/CD:** GitHub Actions with GitHub OIDC and AWS IAM role assumption\n- **Version control:** Git and GitHub
+- **Automation / CI/CD:** GitHub Actions with GitHub OIDC and AWS IAM role assumption
+- **Version control:** Git and GitHub
 
 ## Repository structure
 
@@ -52,14 +53,16 @@ aws-cloud-portfolio/
 5. Enabled CloudFront access to the private S3 origin.
 6. Set `index.html` as the default root object.
 7. Confirmed that the CloudFront HTTPS URL loads.
-8. Tested the direct S3 `index.html` URL in Incognito; S3 returned `AccessDenied`.\n9. Configured GitHub Actions to authenticate with GitHub OIDC, sync website assets to private S3, and request CloudFront invalidation.
+8. Tested the direct S3 `index.html` URL in Incognito; S3 returned `AccessDenied`.
+9. Configured GitHub Actions to authenticate with GitHub OIDC, sync website assets to private S3, and request CloudFront invalidation.
 
 ## Documentation and evidence
 
 - [Deployment notes](docs/deployment-notes.md)
 - [Architecture](docs/architecture.md)
 - [Step-by-step walkthrough with screenshot captions](docs/deployment-walkthrough.md)
-- [Screenshot evidence guide](screenshots/README.md)\n- [GitHub Actions automatic deployment setup](docs/github-actions-deployment.md)
+- [Screenshot evidence guide](screenshots/README.md)
+- [GitHub Actions automatic deployment setup](docs/github-actions-deployment.md)
 
 ## Validation checklist
 
@@ -68,8 +71,13 @@ aws-cloud-portfolio/
 - [x] `index.html` set as default root object
 - [x] Website loads from CloudFront over HTTPS
 - [x] Direct S3 `index.html` request returned `AccessDenied`
-- [x] Configure GitHub OIDC authentication for the repository\n- [x] Automatically deploy site changes from `main` to private S3\n- [x] Invalidate CloudFront cache after deployment\n- [ ] Complete a final manual desktop/mobile and link check
-- [ ] Verify every screenshot file referenced by the walkthrough exists in the repository\n- [ ] Confirm profile image filename and load on the live site\n- [x] Add sanitized screenshots to the repository
+- [x] Configure GitHub OIDC authentication for the repository
+- [x] Automatically deploy site changes from `main` to private S3
+- [x] Invalidate CloudFront cache after deployment
+- [ ] Complete a final manual desktop/mobile and link check
+- [ ] Verify every screenshot file referenced by the walkthrough exists in the repository
+- [ ] Confirm profile image filename and load on the live site
+- [x] Add sanitized screenshots to the repository
 
 ## Security and cost
 
