@@ -41,7 +41,9 @@ The S3 Objects page showed the `assets/` folder and `index.html` object after up
 - [x] Website confirmed to load from the CloudFront HTTPS URL.
 - [x] Direct S3 `index.html` URL tested in Incognito; S3 returned `AccessDenied`, indicating this object is not publicly readable through that URL.
 - [ ] Verify navigation, external links, image assets, and responsive layout on desktop and mobile.
-- [x] Sanitized screenshots uploaded to the repository.\n- [x] Configure GitHub Actions AWS OIDC access.\n- [x] Verify a successful automated deployment run.
+- [x] Sanitized screenshots uploaded to the repository.
+- [x] Configure GitHub Actions AWS OIDC access.
+- [x] Verify a successful automated deployment run.
 
 ## Cost and security notes
 
