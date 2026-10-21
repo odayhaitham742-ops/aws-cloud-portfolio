@@ -24,7 +24,7 @@ flowchart TD
 - **CloudFront domain:** https://d4onyd9a8q3si.cloudfront.net
 - The website loads from the CloudFront URL.
 - Direct access to the S3 `index.html` URL was tested and returned `AccessDenied`.
-- Responsive/mobile checks remain pending.
+- The layout includes responsive CSS; a final manual mobile/browser check should still be completed.
 
 ## Request flow
 
