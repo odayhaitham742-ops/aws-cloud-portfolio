@@ -14,3 +14,9 @@
 .project-links .text-link{margin-top:0}
 @media(max-width:850px){.proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.hero-proof{gap:7px}.hero-proof span{font-size:.68rem}.proof-grid{gap:16px 10px;padding-block:18px}.proof-grid span{font-size:.72rem}.project-links{flex-direction:column;align-items:flex-start;gap:10px}}
+
+/* Project photography overlays */
+.project-art{isolation:isolate}
+.project-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;filter:saturate(.85);z-index:-1}
+.aws-art:before,.aws-art:after{z-index:0;pointer-events:none}
+.project-art>span,.project-art>b,.project-art>strong{position:relative;z-index:1}
