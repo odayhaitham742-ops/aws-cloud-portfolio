@@ -1,8 +1,0 @@
-AWS Cloud Portfolio - sanitized screenshot evidence
-
-Upload the PNG files in this folder to the repository's screenshots/ folder using the filenames shown.
-The files show actual project stages. AWS account identifiers have been obscured in the console screenshots.
-07-cloudfront-website-live.png shows the live portfolio rendered in the browser at the CloudFront URL.
-
-After uploading, check docs/deployment-walkthrough.md to ensure each image renders inline.
-Never upload AWS credentials, access keys, passwords, or session tokens.
