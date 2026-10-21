@@ -2,7 +2,7 @@
 
 A responsive personal portfolio showcasing cloud, networking, and engineering projects. The site is hosted in a private Amazon S3 bucket and delivered through Amazon CloudFront over HTTPS.
 
-> **Status:** Deployed. The website loads through CloudFront. Direct access to the S3 `index.html` URL returned `AccessDenied` in an Incognito test. Additional responsive and asset checks remain.
+> **Status:** Deployed. The website loads through CloudFront. Direct access to the S3 `index.html` URL returned `AccessDenied` in an Incognito test. The deployment walkthrough and sanitized screenshot evidence are included. GitHub Actions deployment workflow has been added; AWS OIDC configuration is still required before automatic deployments can run.
 
 ## Live website
 
@@ -59,7 +59,7 @@ aws-cloud-portfolio/
 - [Deployment notes](docs/deployment-notes.md)
 - [Architecture](docs/architecture.md)
 - [Step-by-step walkthrough with screenshot captions](docs/deployment-walkthrough.md)
-- [Screenshot evidence guide](screenshots/README.md)
+- [Screenshot evidence guide](screenshots/README.md)\n- [GitHub Actions automatic deployment setup](docs/github-actions-deployment.md)
 
 ## Validation checklist
 
