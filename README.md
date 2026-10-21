@@ -52,7 +52,7 @@ aws-cloud-portfolio/
 5. Enabled CloudFront access to the private S3 origin.
 6. Set `index.html` as the default root object.
 7. Confirmed that the CloudFront HTTPS URL loads.
-8. Tested the direct S3 `index.html` URL in Incognito; S3 returned `AccessDenied`.
+8. Tested the direct S3 `index.html` URL in Incognito; S3 returned `AccessDenied`.\n9. Configured GitHub Actions to authenticate with GitHub OIDC, sync website assets to private S3, and request CloudFront invalidation.
 
 ## Documentation and evidence
 
@@ -69,7 +69,7 @@ aws-cloud-portfolio/
 - [x] Website loads from CloudFront over HTTPS
 - [x] Direct S3 `index.html` request returned `AccessDenied`
 - [x] Configure GitHub OIDC authentication for the repository\n- [x] Automatically deploy site changes from `main` to private S3\n- [x] Invalidate CloudFront cache after deployment\n- [ ] Complete a final manual desktop/mobile and link check
-- [x] Add sanitized screenshots to the repository
+- [ ] Verify every screenshot file referenced by the walkthrough exists in the repository\n- [ ] Confirm profile image filename and load on the live site\n- [x] Add sanitized screenshots to the repository
 
 ## Security and cost
 
