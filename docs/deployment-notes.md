@@ -48,7 +48,7 @@ The CloudFront distribution was created successfully. The website was then opene
 - [x] CloudFront distribution created.
 - [x] `index.html` set as the default root object.
 - [x] Website confirmed to load from the CloudFront HTTPS URL.
-- [ ] Attempt direct access to an S3 object URL and confirm it is denied.
+- [x] Attempted direct access to the S3 `index.html` object URL in an Incognito window; S3 returned `AccessDenied`. This confirms that this object is not publicly readable through that direct URL.
 - [ ] Check navigation and static assets on desktop and mobile.
 - [ ] Add sanitized AWS screenshots to the repository.
 
