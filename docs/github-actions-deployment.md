@@ -47,7 +47,9 @@ Create a policy such as `AwsCloudPortfolioGitHubDeployPolicy`. Replace `ACCOUNT_
 }
 ```
 
-The workflow syncs the `assets/` prefix with `--delete`, so `s3:DeleteObject` is needed only for that deployment path. Keep this bucket dedicated to the portfolio website.\n\n**Immutable subject claim note:** GitHub shows this repository's subject prefix as `repo:odayhaitham742-ops@244400858/aws-cloud-portfolio@1428466797`. The trust policy must use that exact prefix plus `:ref:refs/heads/main`; the older `repo:owner/repository:ref:...` format will not match this repository's current claim.
+The workflow syncs the `assets/` prefix with `--delete`, so `s3:DeleteObject` is needed only for that deployment path. Keep this bucket dedicated to the portfolio website.
+
+**Immutable subject claim note:** GitHub shows this repository's subject prefix as `repo:odayhaitham742-ops@244400858/aws-cloud-portfolio@1428466797`. The trust policy must use that exact prefix plus `:ref:refs/heads/main`; the older `repo:owner/repository:ref:...` format will not match this repository's current claim.
 
 ## 3. Create an IAM role trusted only by this repository
 
