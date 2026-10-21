@@ -53,4 +53,4 @@ The S3 Objects page showed the `assets/` folder and `index.html` object after up
 
 ## Evidence
 
-See [deployment walkthrough](deployment-walkthrough.md) for screenshot-by-screenshot explanations. A GitHub Actions workflow is now present at `.github/workflows/deploy.yml`; follow the [automation setup guide](github-actions-deployment.md) to connect it securely to AWS.
+See [deployment walkthrough](deployment-walkthrough.md) for screenshot-by-screenshot explanations. The GitHub Actions workflow at `.github/workflows/deploy.yml` has been tested successfully. It uses GitHub OIDC and the dedicated IAM role to upload `index.html` and sync `assets/` to the private S3 bucket, then requests a CloudFront invalidation. The current trust policy must match the repository's immutable GitHub OIDC subject claim; see the [automation guide](github-actions-deployment.md).
