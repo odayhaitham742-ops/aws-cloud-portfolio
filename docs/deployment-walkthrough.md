@@ -64,7 +64,9 @@ This guide records the actual deployment stages and explains what each screensho
 
 ## 7. Test the live website
 
-**Evidence file:** `screenshots/07-cloudfront-website-live.png`\n\n![Live portfolio on CloudFront](../screenshots/07-cloudfront-website-live.png)
+**Evidence file:** `screenshots/07-cloudfront-website-live.png`
+
+![Live portfolio on CloudFront](../screenshots/07-cloudfront-website-live.png)
 
 **What was done:** Opened the CloudFront HTTPS URL and confirmed the portfolio loads.
 
