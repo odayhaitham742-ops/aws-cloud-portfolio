@@ -69,7 +69,7 @@ aws-cloud-portfolio/
 - [x] Website loads from CloudFront over HTTPS
 - [x] Direct S3 `index.html` request returned `AccessDenied`
 - [ ] Verify navigation, CSS, and JavaScript assets on desktop and mobile
-- [ ] Add sanitized screenshots to the repository
+- [x] Add sanitized screenshots to the repository
 
 ## Security and cost
 
